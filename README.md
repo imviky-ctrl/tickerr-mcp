@@ -1,6 +1,6 @@
 # Tickerr MCP Server
 
-Real-time AI tool intelligence for Claude, Cursor, and Claude Code.
+Real-time AI tool intelligence for Claude, Cursor, Windsurf, and Claude Code.
 Check if ChatGPT is down. Get live API pricing. Compare rate limits.
 
 ## What you can ask
@@ -27,6 +27,26 @@ Check if ChatGPT is down. Get live API pricing. Compare rate limits.
 
 ## Installation
 
+### Claude Code (CLI) — HTTP, recommended
+
+```bash
+claude mcp add tickerr --transport http --url https://tickerr.ai/mcp
+```
+
+### Cursor / Windsurf — HTTP
+
+Add to `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
+
+```json
+{
+  "mcpServers": {
+    "tickerr": {
+      "url": "https://tickerr.ai/mcp"
+    }
+  }
+}
+```
+
 ### Claude Desktop
 
 Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
@@ -42,25 +62,10 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 }
 ```
 
-### Claude Code (CLI)
+### Claude Code (CLI) — npm/stdio alternative
 
 ```bash
 claude mcp add tickerr -- npx -y tickerr-mcp
-```
-
-### Cursor / Windsurf
-
-Add to `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
-
-```json
-{
-  "mcpServers": {
-    "tickerr": {
-      "command": "npx",
-      "args": ["-y", "tickerr-mcp"]
-    }
-  }
-}
 ```
 
 ## Data coverage
