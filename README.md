@@ -1,24 +1,29 @@
-# tickerr-mcp
+# Tickerr MCP Server
 
-MCP server for [tickerr.ai](https://tickerr.ai) — gives AI assistants real-time access to:
+Real-time AI tool intelligence for Claude, Cursor, and Claude Code.
+Check if ChatGPT is down. Get live API pricing. Compare rate limits.
 
-- **Operational status** of 42+ AI tools (ChatGPT, Claude, Gemini, Cursor, GitHub Copilot, etc.)
-- **Uptime history** — 30-day and 90-day uptime percentages from independent monitoring
-- **Incidents** — outage and degradation history for the last 90 days
-- **API pricing** — current input/output cost per 1M tokens for all tracked models
-- **Cost estimation** — compare what a workload costs across models
+## What you can ask
 
-Data is sourced from tickerr.ai's independent monitoring infrastructure (checks every 5 minutes, 26 incident providers, ~700 incidents tracked).
+- "Is Claude down right now?"
+- "What's the cheapest LLM API for my use case?"
+- "What are Cursor's rate limits on the free plan?"
+- "Has OpenAI changed their pricing this month?"
+- "Compare Claude Haiku vs GPT-4o Mini cost per million tokens"
+- "Which AI tools have a free tier for coding assistants?"
+- "Show me recent outages for GitHub Copilot"
 
-## Tools
+## Tools exposed
 
 | Tool | Description |
 |------|-------------|
-| `list_tools` | List all monitored AI tools |
-| `get_tool_status` | Current status, uptime %, response time for a tool |
-| `get_tool_incidents` | Recent incidents (last 90 days) for a tool |
-| `get_pricing` | API pricing for all/filtered models |
-| `estimate_cost` | Compare cost of a token workload across models |
+| `get_tool_status` | Live status + uptime % for any AI tool, checked every 5 min |
+| `get_api_pricing` | Current pricing per model, sorted cheapest first |
+| `get_rate_limits` | Rate limits by tool and plan tier |
+| `compare_pricing` | Rank models by cost for a given token workload |
+| `get_free_tier` | Best free plans by category |
+| `get_incidents` | Historical incident log for any tool (last 90 days) |
+| `list_tools` | All 42+ monitored tools with slugs |
 
 ## Installation
 
@@ -43,9 +48,9 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 claude mcp add tickerr -- npx -y tickerr-mcp
 ```
 
-### Cursor
+### Cursor / Windsurf
 
-Add to `.cursor/mcp.json` in your project or `~/.cursor/mcp.json` globally:
+Add to `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
 
 ```json
 {
@@ -58,41 +63,20 @@ Add to `.cursor/mcp.json` in your project or `~/.cursor/mcp.json` globally:
 }
 ```
 
-## Usage examples
+## Data coverage
 
-Once connected, you can ask your AI assistant:
+42+ AI tools tracked including ChatGPT, Claude, Gemini, Cursor,
+GitHub Copilot, Perplexity, DeepSeek, Fireworks AI, Groq, Cohere, and more.
 
-- *"Is ChatGPT currently operational?"*
-- *"What's Claude's 90-day uptime?"*
-- *"Show me recent outages for GitHub Copilot"*
-- *"Which model is cheapest for my 10k token prompt?"*
-- *"Compare GPT-4o and Claude Sonnet pricing"*
-- *"Estimate cost for 1M input tokens across all Anthropic models"*
-
-## Development
-
-```bash
-npm install
-npm run build
-npm start
-```
-
-To test locally with Claude Desktop, point the config at the built file:
-
-```json
-{
-  "mcpServers": {
-    "tickerr": {
-      "command": "node",
-      "args": ["/absolute/path/to/tickerr-mcp/dist/index.js"]
-    }
-  }
-}
-```
+- **Status**: updated every 5 minutes from independent monitoring
+- **Pricing**: updated daily from official provider documentation
+- **Limits**: updated when providers announce changes
+- **Incidents**: sourced from 26 official provider status pages, ~700 incidents tracked
 
 ## Data source
 
-All data is served from the tickerr.ai public API (`https://tickerr.ai/api/v1`). No API key required. Rate limits apply.
+All data sourced from official provider documentation and live status pages.
+See [tickerr.ai](https://tickerr.ai) for the full web interface.
 
 ## License
 

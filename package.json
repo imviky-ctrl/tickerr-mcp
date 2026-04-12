@@ -1,22 +1,38 @@
 {
   "name": "tickerr-mcp",
   "version": "1.0.0",
-  "description": "MCP server for tickerr.ai — real-time AI tool status, uptime, incidents, and pricing data",
-  "keywords": ["mcp", "ai-status", "uptime", "llm", "pricing", "model-context-protocol"],
+  "description": "MCP server for live AI tool status, API pricing, and rate limits",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "ai-tools",
+    "llm-pricing",
+    "ai-status",
+    "model-context-protocol",
+    "chatgpt",
+    "claude",
+    "uptime"
+  ],
   "homepage": "https://tickerr.ai",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vikassharma/tickerr-mcp"
+    "url": "https://github.com/tickerr-ai/tickerr-mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/tickerr-ai/tickerr-mcp/issues"
   },
   "license": "MIT",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "tickerr-mcp": "dist/index.js"
+    "tickerr-mcp": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
     "start": "node dist/index.js"
   },
   "dependencies": {
