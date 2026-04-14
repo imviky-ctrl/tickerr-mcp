@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.imviky-ctrl/tickerr",
+  "description": "Live status, API pricing and rate limits for ChatGPT, Claude, Gemini, Cursor, GitHub Copilot and 42+ AI tools. Check if any AI tool is down, compare token costs across models, and get plan-by-plan rate limits.",
+  "repository": {
+    "url": "https://github.com/imviky-ctrl/tickerr-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "tickerr-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://tickerr.ai/mcp"
+    }
+  ]
+}

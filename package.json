@@ -35,8 +35,10 @@
     "prepublishOnly": "npm run build",
     "start": "node dist/index.js"
   },
+  "mcpName": "io.github.imviky-ctrl/tickerr",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.22.0"
   },
   "devDependencies": {
     "typescript": "^5.4.0",
