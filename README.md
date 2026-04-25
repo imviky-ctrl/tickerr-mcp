@@ -1,29 +1,31 @@
 # Tickerr MCP Server
 
 Real-time AI tool intelligence for Claude, Cursor, Windsurf, and Claude Code.
-Check if ChatGPT is down. Get live API pricing. Compare rate limits.
+Monitor 90+ AI tools, compare pricing across 300+ LLM models, check live inference latency, and route to the best model for your workload — directly in your AI agent.
 
 ## What you can ask
 
 - "Is Claude down right now?"
-- "What's the cheapest LLM API for my use case?"
+- "What's the cheapest model for summarization under $1/M tokens?"
+- "What are the p95 latency numbers for Gemini 2.0 Flash?"
+- "Compare Claude Haiku vs GPT-4o Mini cost for 10K input, 2K output"
 - "What are Cursor's rate limits on the free plan?"
-- "Has OpenAI changed their pricing this month?"
-- "Compare Claude Haiku vs GPT-4o Mini cost per million tokens"
-- "Which AI tools have a free tier for coding assistants?"
 - "Show me recent outages for GitHub Copilot"
+- "Which AI tools have a free tier for coding?"
+- "Route me to the fastest model under $3/M tokens right now"
 
-## Tools exposed
+## Tools
 
 | Tool | Description |
 |------|-------------|
-| `get_tool_status` | Live status + uptime % for any AI tool, checked every 5 min |
-| `get_api_pricing` | Current pricing per model, sorted cheapest first |
-| `get_rate_limits` | Rate limits by tool and plan tier |
-| `compare_pricing` | Rank models by cost for a given token workload |
-| `get_free_tier` | Best free plans by category |
-| `get_incidents` | Historical incident log for any tool (last 90 days) |
-| `list_tools` | All 42+ monitored tools with slugs |
+| `get_tool_status` | Live status, uptime %, and response time for any AI tool — checked every 5 min |
+| `get_incidents` | Historical incidents and outages for any AI tool (last 90 days) |
+| `get_api_pricing` | Current API pricing per model for any provider, sorted cheapest first |
+| `get_model_performance` | p50/p95 TTFT latency and tokens/sec for specific models — useful for routing |
+| `get_rate_limits` | Rate limits and plan details by tier for any AI tool |
+| `compare_pricing` | Rank models by total cost for a given input/output token workload |
+| `get_free_tier` | Best free plans across AI tools, grouped by category |
+| `list_tools` | List all 90+ monitored tools with their slugs |
 
 ## Installation
 
@@ -70,13 +72,16 @@ claude mcp add tickerr -- npx -y tickerr-mcp
 
 ## Data coverage
 
-42+ AI tools tracked including ChatGPT, Claude, Gemini, Cursor,
-GitHub Copilot, Perplexity, DeepSeek, Fireworks AI, Groq, Cohere, and more.
+90+ AI tools tracked including ChatGPT, Claude, Gemini, Grok, Cursor, GitHub Copilot,
+Perplexity, DeepSeek, Fireworks AI, Groq, Cohere, Mistral, and more.
 
 - **Status**: updated every 5 minutes from independent monitoring
-- **Pricing**: updated daily from official provider documentation
-- **Limits**: updated when providers announce changes
-- **Incidents**: sourced from 26 official provider status pages, ~700 incidents tracked
+- **LLM pricing**: 300+ models with per-model input/output token pricing
+- **Inference benchmarks**: p50/p95 TTFT and tokens/sec per model
+- **Rate limits**: updated when providers announce changes
+- **Incidents**: sourced from 30+ official provider status pages, 1,000+ incidents tracked
+
+Full model pages with pricing history and latency trends at [tickerr.ai/models](https://tickerr.ai/models).
 
 ## Data source
 
